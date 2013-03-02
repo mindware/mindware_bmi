@@ -23,9 +23,29 @@ class Mindware
 	$SERVER_PORT	= "8080"
 
 	def initialize
+		grab_logo
 		# Link to connector
 		connector = Connector.new($CONNECTOR_ADDRESS, $CONNECTOR_PORT)
 	end	
+
+	def grab_logo
+		File.open("etc/logo", "r") do |file|
+ 			 while line = file.gets
+    				puts line
+ 			 end
+		end
+		puts "\nBy: Andres Colon Perez\n"+
+		     "Github: http://github.com/mindware/mindware\n"
+		puts "For: HackPR Mayaguez! March 2 2013"
+		puts "\tShoutouts:\n"+
+		     "\t----------\n"+
+		     "\tGiancarlos Gonzalez (Government CIO)\n"+
+		     "\tRoberto Rosario, Ramphis Castro, Startups of PR,\n"+
+		     "\tOscar, TiG Team @ Rama Ejecutiva!\n"+
+		     "\n"+
+		     "\tSpecial thanks to the Hackathon Sponsors!\n"
+		puts "\t-----------\n"
+	end
 end
 
 
