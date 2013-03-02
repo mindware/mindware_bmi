@@ -9,17 +9,28 @@ module Client
 	end
 
 	def receive_data(data)
-		#puts data if data.include? "eSense"
-		if data.include? "eSense"
-			parsed = JSON.parse(data)
-			print "Attention: #{parsed["attention"]}" if !parsed["attention"].nil?
-			print "Meditation: #{parsed["meditation"}" if !parsed["meditation"].nil?
-			puts ""
+		begin
+			#puts data if data.include? "eSense"
+			if data.include? "eSense"
+				puts data
+				#parsed = JSON.parse(data)
+				parsed = process_protocol(data)
+				if !parsed.empty?
+					print "Attention: #{parsed[0][0]}" if !parsed[0][0].nil?	  #attention
+					puts "\tMeditation: #{parsed[0][1]}" if !parsed[0][1].nil? #meditation
+				end
+			end
+		rescue Exception => e
+			puts "Data was not yet ready to be parsed. Continuing..."
 		end
 	end
 	
 	def unbind
 		puts "Disconnecting Client Connector..."
 		EventMachine::stop_event_loop
+	end
+	
+	def process_protocol(data)
+		data.scan(/"attention":(\d+)\,"meditation":(\d+)/)
 	end
 end
