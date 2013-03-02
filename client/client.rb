@@ -8,7 +8,7 @@ module Client
 	end
 
 	def receive_data(data)
-		puts data
+		puts data if data.include? "eSense"
 	end
 	
 	def unbind
