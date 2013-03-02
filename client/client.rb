@@ -13,8 +13,14 @@ module Client
 			if data.include? "eSense"
 				parsed = process_protocol(data)
 				if !parsed.empty?
-					print "Attention: #{parsed[0][0]}" if !parsed[0][0].nil?	  #attention
-					puts "\tMeditation: #{parsed[0][1]}" if !parsed[0][1].nil? #meditation
+					attention = parsed[0][0]
+					meditation= parsed[0][1]
+					if(attention == 0 and meditation == 0)
+						puts "Waiting for input..."
+					else
+						print "Attention: #{attention}" if !attention.nil?	  #attention
+						puts "\tMeditation: #{meditation}" if !meditation.nil? #meditation
+					end
 				end
 			end
 		rescue Exception => e
