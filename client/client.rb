@@ -10,10 +10,7 @@ module Client
 
 	def receive_data(data)
 		begin
-			#puts data if data.include? "eSense"
 			if data.include? "eSense"
-				puts data
-				#parsed = JSON.parse(data)
 				parsed = process_protocol(data)
 				if !parsed.empty?
 					print "Attention: #{parsed[0][0]}" if !parsed[0][0].nil?	  #attention
@@ -31,6 +28,7 @@ module Client
 	end
 	
 	def process_protocol(data)
-		data.scan(/"attention":(\d+)\,"meditation":(\d+)/)
+		#parsed = JSON.parse(data) # Incoming data is invalid JSON, so we'll work on this later
+		data.scan(/"attention":(\d+)\,"meditation":(\d+)/)	# Do it like a hacker. Regex!
 	end
 end
