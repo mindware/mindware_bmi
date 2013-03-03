@@ -2,5 +2,6 @@
 source "https://rubygems.org"
 
 # Our networking engine
-gem "eventmachine"
+gem "em-websocket"
+#gem "eventmachine"
 gem 'json'
