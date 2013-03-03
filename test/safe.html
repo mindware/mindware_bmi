@@ -14,7 +14,6 @@
 			        // Web Socket is connected, send data using send()
 			        //ws.send("Message to send");
       				console("Connected...");
-				play_sound("focus");
   			   };
  			   ws.onmessage = function (evt) 
  			    { 
@@ -42,30 +41,10 @@
 		function log(str) {
 			$("#log").html(str);
 		}
-		function play_sound(elem) {
-			soundOn = true;
-			if(soundOn) {
-					try {
-						document.getElementById(elem).volume=0.25; /* Could change this later */
-						document.getElementById(elem).play();
-	 
-					}
-			catch(v) {
-				//alert(v);
-			}
-		}
-	// Else, we do nothing.
-}
-
-
 		</script>
 	</head>
 	<body onload="connect();">
-		<audio id="focus" src="media/ogg/focus.ogg" preload="auto"> 
-			Your browser does not support the audio element.
-		</audio>  
 		<div><h1>Mindware: Websocket Nueral Interface</h1></div>
-		<hr/>
 		<h3>Status:</h3><span id="status"><h4>Disconnected</h4></span>
 		<div id="log">...waiting</div>
 	</body>
