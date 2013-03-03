@@ -3,7 +3,7 @@ module Client
 
 	def post_init
 		puts "Loading Client Connector..."
-		puts "Requesting switch from binary input..."
+		puts "Connecting to Brain Machine Interface..."
 		# Request JSON output
 		send_data '{"enableRawOutput": true, "format": "Json"}'
 	end

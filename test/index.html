@@ -21,6 +21,8 @@
       				  var received_msg = evt.data;
        				  console("<h3>Monitoring Neural Activity</h3>");
 				  log("<strong>"+ received_msg +"</strong></br>");
+				  //var c = eval(received_msg);
+				  //alert(c["attention"]);   
  			    };
    			  ws.onclose = function()
   			   { 
@@ -60,13 +62,13 @@
 
 		</script>
 	</head>
-	<body onload="connect();">
+	<body onload="connect();" style="text-align: center;">
 		<audio id="focus" src="media/ogg/focus.ogg" preload="auto"> 
 			Your browser does not support the audio element.
 		</audio>  
 		<div><h1>Mindware: Websocket Nueral Interface</h1></div>
 		<hr/>
-		<h3>Status:</h3><span id="status"><h4>Disconnected</h4></span>
-		<div id="log">...waiting</div>
+		<h3>Status:</h3><h4><span id="status">Disconnected</span></h4>
+		<h2><div id="log">...waiting</div></h2>
 	</body>
 </html>
