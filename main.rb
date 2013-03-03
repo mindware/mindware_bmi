@@ -37,6 +37,7 @@ class Mindware
 			$ws	  = Server.new($SERVER_ADDRESS, $SERVER_PORT)	
 		}	
 		while true 
+			sleep 1
 		end
 	end	
 

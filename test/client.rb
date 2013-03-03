@@ -1,7 +1,7 @@
 require 'eventmachine'
 require 'em-websocket'
 require 'em-websocket-client'
-$SERVER_IP = "127.0.0.1" if $SERVER_IP.nil?
+$SERVER_IP = "127.0.0.1:8080" if $SERVER_IP.nil?
 EM.run do
   conn = EventMachine::WebSocketClient.connect("ws://#{$SERVER_IP}/")
 
