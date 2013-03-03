@@ -16,11 +16,12 @@ module Client
 					attention = parsed[0][0]
 					meditation= parsed[0][1]
 					if(attention.to_i == 0 and meditation.to_i == 0)
-						puts data
+						#puts data
 						puts "Waiting for Neural Input..."
 					else
-						print "Attention: #{attention}" if !attention.nil?	  #attention
-						puts "\tMeditation: #{meditation}" if !meditation.nil? #meditation
+						#puts "Attention: #{attention}" if !attention.nil?	  #attention
+						#puts "\tMeditation: #{meditation}" if !meditation.nil? #meditation
+						puts "\rAttention: #{attention}\tMeditation: #{meditation}" 
 						broadcast("[\"attention\":#{attention},\"meditation\":#{meditation}\"]") 
 					end
 				end
@@ -44,6 +45,8 @@ module Client
 		if !$ws.nil?
 			"#{self} sending data"
 			$ws.broadcast(data)
+		else
+			#puts "Websocket Server is down" 
 		end
 	end
 end

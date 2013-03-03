@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>Mindware Test</title>
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script>
+		function connect() {
+		  if ("WebSocket" in window)
+		  {
+    			 console("WebSocket is supported by your Browser!");
+    			 // Let us open a web socket
+   			  var ws = new WebSocket("ws://localhost:8080/");
+    		 	  ws.onopen = function()
+    			 {
+			        // Web Socket is connected, send data using send()
+			        //ws.send("Message to send");
+      				console("Connected...");
+  			   };
+ 			   ws.onmessage = function (evt) 
+ 			    { 
+      				  var received_msg = evt.data;
+       				  console("<h3>Monitoring Neural Activity</h3>");
+				  log("<strong>"+ received_msg +"</strong></br>");
+ 			    };
+   			  ws.onclose = function()
+  			   { 
+       			 	// websocket is closed.
+        			console("Connection is closed..."); 
+    			   };
+ 		 }
+ 		 else
+  		{
+     			// The browser doesn't support WebSocket
+  	  		 console("WebSocket NOT supported by your Browser!");
+ 		 }
+		}
+		
+		function console(str) {
+			$("#status").html(str);
+		}
+
+		function log(str) {
+			$("#log").html(str);
+		}
+		</script>
+	</head>
+	<body onload="connect();">
+		<div><h1>Mindware: Websocket Nueral Interface</h1></div>
+		<h3>Status:</h3><span id="status"><h4>Disconnected</h4></span>
+		<div id="log">...waiting</div>
+	</body>
+</html>

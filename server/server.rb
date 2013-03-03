@@ -8,7 +8,7 @@ class Server
 		EM.run {
  			 EM::WebSocket.run(:host => host, :port => port) do |ws|
  			   ws.onopen { |handshake|
-			      puts "WebSocket connection open"
+			      puts "\n\nIncoming WebSocket connection established!\n"
 			      # Access properties on the EM::WebSocket::Handshake object, e.g.
  			      # path, query_string, origin, headers
 			      # Publish message to the client
