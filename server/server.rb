@@ -30,13 +30,14 @@ class Server
 	end
 
 	def broadcast(data)
-		puts "Websocket Server would broadcast data: #{data}"
+		#puts "Websocket Server would broadcast data: #{data}" if @clients.nil? or @clients.length == 0
 		return false if @clients.nil?
 		return false if @clients.length == 0
 		@clients.each do |c|
-			puts "Sending data to #{c}"
+			#puts "Sending data to #{c}"
 			c.send data
 		end
+		#puts "\r"
 	end
 
 	# Stop the Websocket Server

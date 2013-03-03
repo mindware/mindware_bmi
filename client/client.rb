@@ -43,7 +43,7 @@ module Client
 
 	def broadcast(data)
 		if !$ws.nil?
-			"#{self} sending data"
+			#"#{self} sending data"
 			$ws.broadcast(data)
 		else
 			#puts "Websocket Server is down" 
