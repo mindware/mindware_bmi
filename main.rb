@@ -6,6 +6,7 @@ $: << File.expand_path(File.dirname(__FILE__) + "/")
 # Connector files
 require 'client/connector'
 require 'client/client'
+require 'client/persistence'
 
 # Server Files
 require 'server/server'
@@ -23,9 +24,10 @@ class Mindware
 	$SERVER_PORT	= "8080"
 
 	$SERVER_IP	= "127.0.0.1"
-	#$SERVER_IP	= "192.168.1.x"
 
-	def initialize
+	def initialize(options = {})
+    options = defaults.merge(options)
+
 		grab_logo
 		# Link to connector
 		puts "Starting Multi-threading:"
@@ -35,11 +37,20 @@ class Mindware
 		
 		websocket_thread = Thread.new {
 			$ws	  = Server.new($SERVER_ADDRESS, $SERVER_PORT)	
-		}	
+		}
+    if options.fetch(:persistence)
+      persistence_thread = Thread.new {
+        $db = Persistence.new
+      }
+    end
 		while true 
 			sleep 1
 		end
-	end	
+  end
+
+  def defaults
+    { persistence: false }
+  end
 
 	def grab_logo
 		File.open("etc/logo", "r") do |file|
@@ -61,5 +72,5 @@ class Mindware
 	end
 end
 
-
+# To save session to database: Mindware.new(persistence: true)
 Mindware.new
