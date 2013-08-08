@@ -5,3 +5,7 @@ source "https://rubygems.org"
 gem "em-websocket"
 #gem "eventmachine"
 gem 'json'
+gem 'sqlite3'
+gem 'data_mapper'
+gem 'dm-sqlite-adapter'
+

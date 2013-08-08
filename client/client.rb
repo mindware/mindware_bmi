@@ -22,7 +22,8 @@ module Client
 						#puts "Attention: #{attention}" if !attention.nil?	  #attention
 						#puts "\tMeditation: #{meditation}" if !meditation.nil? #meditation
 						puts "\rAttention: #{attention}\tMeditation: #{meditation}" 
-						broadcast("[\"attention\":#{attention},\"meditation\":#{meditation}\"]") 
+						broadcast("[\"attention\":#{attention},\"meditation\":#{meditation}\"]")
+            $db.create(attention, meditation) unless $db.nil?
 					end
 				end
 			end

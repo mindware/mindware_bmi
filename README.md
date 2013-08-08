@@ -11,6 +11,16 @@ Stack:
 - ThinkGear
 - HTML5
 
+Configuration
+=============
+###Persistence with SQLite3
+
+To save your NeuralData input to the database (db/mindware.sqlite3):
+
+```ruby
+Mindware.new(persistence: true)
+```
+
 
 The MIT License
 ===============
