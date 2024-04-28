@@ -13,7 +13,7 @@ Stack:
 
 Configuration
 =============
-###Persistence with SQLite3
+### Persistence with SQLite3
 
 To save your NeuralData input to the database (db/mindware.sqlite3):
 
